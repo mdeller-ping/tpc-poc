@@ -6,12 +6,12 @@ spec:
   selector:
     app: pingfederate
   ports:
-  - port: 9999
-    name: pf-console
-    targetPort: 9999
-  - port: 9031
-    name: pf-runtime
-    targetPort: 9031
+    - port: 9999
+      name: pf-console
+      targetPort: 9999
+    - port: 9031
+      name: pf-runtime
+      targetPort: 9031
   type: LoadBalancer
 ---
 apiVersion: apps/v1
@@ -30,21 +30,26 @@ spec:
         app: pingfederate
     spec:
       containers:
-      - name: pingfederate
-        image: gcr.io/ping-identity/pingfederate:10.0.0-Beta-alpine-edge
-        ports:
-        - containerPort: 9999
-        - containerPort: 9031
-        resources:
-          requests:
-            memory: "1.5Gi"
-            cpu: "1"
-          limits:
-            memory: "1.5Gi"
-            cpu: "1"
-        envFrom:
-        - configMapRef:
-            name: pingfederate-environment-variables
-        - secretRef:
-            name: devops-secret
-            optional: true
+        - name: pingfederate
+          image: gcr.io/ping-identity/pingfederate:10.0.0-Beta-alpine-edge
+          ports:
+            - containerPort: 9999
+            - containerPort: 9031
+          resources:
+            requests:
+              memory: "1.5Gi"
+              cpu: "1"
+            limits:
+              memory: "1.5Gi"
+              cpu: "1"
+          env:
+            - name: SERVER_PROFILE_URL
+              value: https://github.com/mdeller-ping/tpc-poc.git
+            - name: SERVER_PROFILE_PATH
+              value: pingfederate
+          envFrom:
+            - configMapRef:
+                name: pingfederate-environment-variables
+            - secretRef:
+                name: devops-secret
+                optional: true
