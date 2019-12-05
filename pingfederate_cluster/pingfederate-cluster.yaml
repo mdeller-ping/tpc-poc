@@ -4,7 +4,8 @@ metadata:
   name: pingfederate-console-loadbalancer
 spec:
   selector:
-    app: pingfederate-console
+    role: console
+    app: pingfederate
   ports:
     - port: 9999
       name: pingfederate-console
@@ -17,7 +18,8 @@ metadata:
   name: pingfederate-engine-loadbalancer
 spec:
   selector:
-    app: pingfederate-engine
+    role: engine
+    app: pingfederate
   ports:
     - port: 9031
       name: pingfederate-engine
@@ -52,11 +54,13 @@ spec:
   selector:
     matchLabels:
       app: pingfederate
+      role: console
   template:
     metadata:
       name: pingfederate
       labels:
         app: pingfederate
+        role: console
     spec:
       containers:
         - name: pingfederate-console
@@ -99,11 +103,13 @@ spec:
   selector:
     matchLabels:
       app: pingfederate
+      role: engine
   template:
     metadata:
       name: pingfederate
       labels:
         app: pingfederate
+        role: engine
     spec:
       containers:
         - name: pingfederate-engine
