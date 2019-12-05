@@ -1,0 +1,10 @@
+SERVER_PROFILE_URL=https://git.trango8.com/pingidentity-public/pingidentity-server-profiles.git
+SERVER_PROFILE_PATH=pf-dns-ping-clustering/pingfederate
+
+PA_CONSOLE_HOST=pingfederate
+INITIAL_ADMIN_PASSWORD=2FederateM0re
+PF_DNS_PING_CLUSTER=_bind-port._tcp.pf-cluster-dns
+PF_DNS_PING_NAMESPACE=ping-cloud-devops-eks-mdeller
+PF_DNS_PING_RECORDTYPE=SRV
+
+OPERATIONAL_MODE=CLUSTERED_CONSOLE

@@ -185,13 +185,13 @@ pf.heartbeat.system.monitoring=false
 #                       protocol engine. 
 # Note: Only one node in a cluster can run the administrative console.
 # Default is STANDALONE.
-pf.operational.mode=CLUSTERED_ENGINE
+pf.operational.mode=${OPERATIONAL_MODE}
 
 # The following properties apply only if "pf.operational.mode" 
 # is *not* STANDALONE:
 pf.cluster.node.index=
 # A strong, randomly-generated key (22 or more alphanumerics) is recommended.
-pf.cluster.auth.pwd=c91b7b0cf925342a8808e4357861688f
+pf.cluster.auth.pwd=
 pf.cluster.encrypt=false
 
 # Specify the key size to use with the AES encryption algorithm that is used
@@ -241,7 +241,7 @@ pf.cluster.adaptive=true
 #	true - enable diagnostics
 #	false - disable diagnostics
 # Default is false
-pf.cluster.diagnostics.enabled=true
+pf.cluster.diagnostics.enabled=false
 
 # These properties define the IP address and port over which PingFederate communicates
 # JGroups diagnostic information.
