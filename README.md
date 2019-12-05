@@ -11,33 +11,33 @@ Kubernetes stuff
 ## Clone this repo
 
 ```text
-git clone https://github.com/mdeller-ping/tpc-poc.git
+$ git clone https://github.com/mdeller-ping/tpc-poc.git
 ```
 
 ## Create console-variables configmap
 Customize kubernetes/console-variables with your environment specific information
 
 ```text
-kubectl create configmap console-variables --from-env-file=pkubernetes/console-variables
+$ kubectl create configmap console-variables --from-env-file=pkubernetes/console-variables
 ```
 
 ## Create engine-variables configmap
 Customize kubernetes/engine-variables with your environment specific information
 
 ```text
-kubectl create configmap engine-variables --from-env-file=pkubernetes/engine-variables
+$ kubectl create configmap engine-variables --from-env-file=pkubernetes/engine-variables
 ```
 
 ## Apply
 
 ```text
-kubectl apply -f cluster.yaml
+$ kubectl apply -f cluster.yaml
 ```
 
 ## See the things
 
 ```text
-kubectl get all
+$ kubectl get all
 ```
 
 ```text
@@ -63,7 +63,7 @@ replicaset.apps/pf-cluster-engine-xxx           2         2         2       94m
 ## See your pods
 
 ```text
-kubectl get pods -o wide
+$ kubectl get pods -o wide
 ```
 
 ```text
@@ -71,6 +71,46 @@ NAME                                  READY   STATUS    RESTARTS   AGE    IP    
 pf-cluster-console-6d868fcf7d-chvdh   1/1     Running   0          108m   192.168.54.124   ip-192-168-41-213.us-east-2.compute.internal   <none>           <none>
 pf-cluster-engine-7b668d769f-bqskb    1/1     Running   0          108m   192.168.9.12     ip-192-168-21-89.us-east-2.compute.internal    <none>           <none>
 pf-cluster-engine-7b668d769f-njlqw    1/1     Running   0          108m   192.168.50.125   ip-192-168-41-213.us-east-2.compute.internal   <none>           <none>
+```
+
+## Manually scale up or down
+
+```text
+$ kubectl scale deployments/pf-cluster-engine --replicas=10
+deployment.extensions/pf-cluster-engine scaled
+
+$ kubectl get pods
+
+NAME                                  READY   STATUS              RESTARTS   AGE
+pf-cluster-console-6d868fcf7d-chvdh   1/1     Running             0          110m
+pf-cluster-engine-7b668d769f-8phvr    1/1     Running             0          3s
+pf-cluster-engine-7b668d769f-bpqjp    0/1     ContainerCreating   0          3s
+pf-cluster-engine-7b668d769f-bqskb    1/1     Running             0          110m
+pf-cluster-engine-7b668d769f-csfs8    1/1     Running             0          3s
+pf-cluster-engine-7b668d769f-fdcfs    1/1     Running             0          3s
+pf-cluster-engine-7b668d769f-hrm8v    1/1     Running             0          3s
+pf-cluster-engine-7b668d769f-lfxbx    1/1     Running             0          3s
+pf-cluster-engine-7b668d769f-mbl98    1/1     Running             0          3s
+pf-cluster-engine-7b668d769f-njlqw    1/1     Running             0          110m
+pf-cluster-engine-7b668d769f-pt869    1/1     Running             0          3s
+
+$ kubectl scale deployments/pf-cluster-engine --replicas=2
+deployment.extensions/pf-cluster-engine scaled
+
+$ kubectl get pods
+
+NAME                                  READY   STATUS        RESTARTS   AGE
+pf-cluster-console-6d868fcf7d-chvdh   1/1     Running       0          112m
+pf-cluster-engine-7b668d769f-8phvr    0/1     Terminating   0          116s
+pf-cluster-engine-7b668d769f-bpqjp    0/1     Terminating   0          116s
+pf-cluster-engine-7b668d769f-bqskb    1/1     Running       0          112m
+pf-cluster-engine-7b668d769f-csfs8    0/1     Terminating   0          116s
+pf-cluster-engine-7b668d769f-fdcfs    0/1     Terminating   0          116s
+pf-cluster-engine-7b668d769f-hrm8v    0/1     Terminating   0          116s
+pf-cluster-engine-7b668d769f-lfxbx    0/1     Terminating   0          116s
+pf-cluster-engine-7b668d769f-mbl98    0/1     Terminating   0          116s
+pf-cluster-engine-7b668d769f-njlqw    1/1     Running       0          112m
+pf-cluster-engine-7b668d769f-pt869    0/1     Terminating   0          116s
 ```
 
 ## View a log file
