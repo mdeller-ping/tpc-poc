@@ -1231,11 +1231,11 @@
         <Logger name="org.eclipse.jetty.server.session" level="WARN" />
         <Logger name="org.apache.hivemind" level="INFO" />
         <!-- Limit the jgroups category -->
-        <Logger name="org.jgroups" level="INFO" />
-        <Logger name="com.pingidentity.jgroups.org.jgroups" level="WARN" />
-        <Logger name="com.pingidentity.aws" level="INFO" />
+        <Logger name="org.jgroups" level="DEBUG" />
+        <Logger name="com.pingidentity.jgroups.org.jgroups" level="DEBUG" />
+        <Logger name="com.pingidentity.aws" level="DEBUG" />
         <!-- Limit the Amazon AWS SDK logging -->
-        <Logger name="com.amazonaws" level="INFO" />
+        <Logger name="com.amazonaws" level="DEBUG" />
         <Logger name="com.pingidentity.locale" level="INFO" />
         <Logger name="com.pingidentity.sdk.locale" level="INFO" />
         <Logger name="org.apache.axis" level="INFO" />
