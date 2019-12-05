@@ -191,7 +191,7 @@ pf.operational.mode=CLUSTERED_CONSOLE
 # is *not* STANDALONE:
 pf.cluster.node.index=
 # A strong, randomly-generated key (22 or more alphanumerics) is recommended.
-pf.cluster.auth.pwd=
+pf.cluster.auth.pwd=c91b7b0cf925342a8808e4357861688f
 pf.cluster.encrypt=false
 
 # Specify the key size to use with the AES encryption algorithm that is used
@@ -241,7 +241,7 @@ pf.cluster.adaptive=true
 #	true - enable diagnostics
 #	false - disable diagnostics
 # Default is false
-pf.cluster.diagnostics.enabled=false
+pf.cluster.diagnostics.enabled=true
 
 # These properties define the IP address and port over which PingFederate communicates
 # JGroups diagnostic information.
