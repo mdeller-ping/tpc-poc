@@ -185,7 +185,7 @@ pf.heartbeat.system.monitoring=false
 #                       protocol engine. 
 # Note: Only one node in a cluster can run the administrative console.
 # Default is STANDALONE.
-pf.operational.mode=CLUSTERED_CONSOLE
+pf.operational.mode=CLUSTERED_ENGINE
 
 # The following properties apply only if "pf.operational.mode" 
 # is *not* STANDALONE:
