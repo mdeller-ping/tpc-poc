@@ -31,7 +31,7 @@ kubectl create configmap engine-variables --from-env-file=pkubernetes/engine-var
 ## Apply
 
 ```text
-kubectl apply -f pingfederate-cluster.yaml
+kubectl apply -f cluster.yaml
 ```
 
 ## See the deployment
