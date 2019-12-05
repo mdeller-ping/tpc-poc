@@ -70,9 +70,22 @@ spec:
             limits:
               memory: "1.5Gi"
               cpu: "1"
+          env:
+            - name: SERVER_PROFILE_URL
+              value: https://github.com/mdeller-ping/tpc-poc.git
+            - name: SERVER_PROFILE_PATH
+              value: pingfederate
+            - name: PF_DNS_PING_CLUSTER
+              value: _bind-port._tcp.pf-cluster-dns
+            - name: PF_DNS_PING_NAMESPACE
+              value: ping-cloud-devops-eks-mdeller
+            - name: PF_DNS_PING_RECORDTYPE
+              value: SRV
+            - name: OPERATIONAL_MODE
+              value: CLUSTERED_CONSOLE
           envFrom:
             - configMapRef:
-                name: pingfederate-console-variables
+                name: private-variables
             - secretRef:
                 name: devops-secret
                 optional: true
@@ -104,9 +117,22 @@ spec:
             limits:
               memory: "1.5Gi"
               cpu: "1"
+          env:
+            - name: SERVER_PROFILE_URL
+              value: https://github.com/mdeller-ping/tpc-poc.git
+            - name: SERVER_PROFILE_PATH
+              value: pingfederate
+            - name: PF_DNS_PING_CLUSTER
+              value: _bind-port._tcp.pf-cluster-dns
+            - name: PF_DNS_PING_NAMESPACE
+              value: ping-cloud-devops-eks-mdeller
+            - name: PF_DNS_PING_RECORDTYPE
+              value: SRV
+            - name: OPERATIONAL_MODE
+              value: CLUSTERED_ENGINE
           envFrom:
             - configMapRef:
-                name: pingfederate-engine-variables
+                name: private-variables
             - secretRef:
                 name: devops-secret
                 optional: true
