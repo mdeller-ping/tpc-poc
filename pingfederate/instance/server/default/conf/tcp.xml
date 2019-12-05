@@ -54,7 +54,7 @@
          This is the recommended dynamic discovery mechanism when using Kubernetes.
          See JGroups documentation on DNS_PING for further information on the available settings. -->
     <dns.DNS_PING
-             dns_query="pingfederate" />
+             dns_query="ping-cloud-devops-eks-mdeller.svc.cluster.local" />
 
     <!-- To enable discovery of EC2 instances in AWS dynamically, comment out TCPPING, and uncomment the section below.
          This is an alternative to NATIVE_S3_PING when running on EC2 and not using container technology.
