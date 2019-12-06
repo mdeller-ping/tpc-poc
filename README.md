@@ -15,14 +15,14 @@ $ git clone https://github.com/mdeller-ping/tpc-poc.git
 ```
 
 ## Create console-variables configmap
-Customize kubernetes/console-variables with your environment specific information
+Customize kubernetes/console-variables with your environment specific information and then create the configmap
 
 ```text
 $ kubectl create configmap console-variables --from-env-file=pkubernetes/console-variables
 ```
 
 ## Create engine-variables configmap
-Customize kubernetes/engine-variables with your environment specific information
+Customize kubernetes/engine-variables with your environment specific information and then create the configmap
 
 ```text
 $ kubectl create configmap engine-variables --from-env-file=pkubernetes/engine-variables
