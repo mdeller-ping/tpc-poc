@@ -17,7 +17,7 @@
         <urn:Field name="Local Identity Profile"/>
         <urn:Field name="Notification Publisher"/>
         <urn:Field name="Enable Username Recovery">false</urn:Field>
-        <urn:Field name="Login Template">html.form.login.template.html</urn:Field>
+        <urn:Field name="Login Template">html.form.login.tpc.html</urn:Field>
         <urn:Field name="Logout Path"/>
         <urn:Field name="Logout Redirect"/>
         <urn:Field name="Logout Template">idp.logout.success.page.template.html</urn:Field>
@@ -53,7 +53,7 @@
         <urn:Field name="CAPTCHA for Username recovery">false</urn:Field>
     </urn:Fields>
     <urn:AdvancedFields>
-        <urn:Field name="Login Template">html.form.login.template.html</urn:Field>
+        <urn:Field name="Login Template">html.form.login.tpc.html</urn:Field>
         <urn:Field name="Logout Path"/>
         <urn:Field name="Logout Redirect"/>
         <urn:Field name="Logout Template">idp.logout.success.page.template.html</urn:Field>
