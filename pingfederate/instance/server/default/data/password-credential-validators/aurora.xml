@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="aurora" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="JDBC Datasource">JDBC-74387A3C051BC8B4960C5A9D074ABDD37D7643A8</urn:Field>
+        <urn:Field name="Verify Password Store Procedure Name">user_login_by_email</urn:Field>
+    </urn:Fields>
+    <urn:AdvancedFields/>
+    <urn:Tables/>
+</urn:PluginConfiguration>
