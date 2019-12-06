@@ -10,7 +10,9 @@
      authentication, etc. For each item, the name of the item maps
      to the alias of a private key, and the value of the item is the
      password to that particular key.-->
-    <map name="DsigPrivateKeyPasswords"/>
+    <map name="DsigPrivateKeyPasswords">
+        <item name="n3jp5pnonya2qstiy163nawos">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiUWVzOVR5eTV5WiIsInZlcnNpb24iOiIxMC4wLjAuOSJ9..405whxX2G8vx_ieGWUVRKg.w1jkXTSV_47Qv3BieLE9UuG3RSLM80ShUXmIwqYysL8.HHgDDwqXK3DDciqEFrEWYQ</item>
+    </map>
     <!--DSIG HSM Keystore information: name and password-->
     <item name="DsigHSMKeystoreName">ping-dsig.hsmks</item>
     <item name="DsigHSMKeystorePassword"/>
@@ -23,7 +25,7 @@
     <map name="DsigHSMPrivateKeyPasswords"/>
     <!--SSL Keystore information: name and password-->
     <item name="SslKeystoreName">ping-ssl.jks</item>
-    <item name="SslKeystorePassword"/>
+    <item name="SslKeystorePassword">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiUWVzOVR5eTV5WiIsInZlcnNpb24iOiIxMC4wLjAuOSJ9..L33fy8XhOC9LAq3R1nHBqw.p6-JWvVIS8ybO7LRXHqOKtIhbjj9zzP3qjRf-MnIejU.8mUw9DlSuJkY9De7IMRAfw</item>
     <!--Do not modify-->
     <item name="SslKeystoreType2">default</item>
     <!--Map of SSL client auth keystore aliases to passwords; the system uses this map
