@@ -1,83 +1,80 @@
-apiVersion: v1
-items:
-- apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    annotations:
-    name: pf-cluster-console
-    labels:
-      app: pf-cluster
-      tier: frontend
-  spec:
-    replicas: 1
-    selector:
-        matchLabels:
-          app: pf-cluster
-          tier: frontend
-    template:
-      metadata:
-        labels:
-          app: pf-cluster
-          tier: frontend
-      spec:
-        containers:
-        - name: console-node
-          image: gcr.io/ping-identity/pingfederate:10.0.0-Beta-centos-edge
-          ports:
-          - containerPort: 9999
-          resources:
-            requests:
-              memory: "1.5Gi"
-              cpu: "1"
-            limits:
-              memory: "1.5Gi"
-              cpu: "1"
-          envFrom:
-            - configMapRef:
-                name: console-variables
-            - secretRef:
-                name: devops-secret
-                optional: true
-- apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    annotations:
-    name: pf-cluster-engine
-    labels:
-      app: pf-cluster
-      tier: backend
-  spec:
-    replicas: 2
-    selector:
-        matchLabels:
-          app: pf-cluster
-          tier: backend
-    template:
-      metadata:
-        labels:
-          app: pf-cluster
-          tier: backend
-      spec:
-        containers:
-        - name: engine-node
-          image: gcr.io/ping-identity/pingfederate:10.0.0-Beta-centos-edge
-          ports:
-          - containerPort: 9031
-          resources:
-            requests:
-              memory: "1.5Gi"
-              cpu: "1"
-            limits:
-              memory: "1.5Gi"
-              cpu: "1"
-          envFrom:
-            - configMapRef:
-                name: engine-variables
-            - secretRef:
-                name: devops-secret
-                optional: true
-kind: List
-metadata: {}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  name: pf-cluster-console
+  labels:
+    app: pf-cluster
+    tier: console
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: pf-cluster
+        tier: console
+  template:
+    metadata:
+      labels:
+        app: pf-cluster
+        tier: console
+    spec:
+      containers:
+      - name: console-node
+        image: gcr.io/ping-identity/pingfederate:10.0.0-Beta-centos-edge
+        ports:
+        - containerPort: 9999
+        resources:
+          requests:
+            memory: "1.5Gi"
+            cpu: "1"
+          limits:
+            memory: "1.5Gi"
+            cpu: "1"
+        envFrom:
+          - configMapRef:
+              name: console-variables
+          - secretRef:
+              name: devops-secret
+              optional: true
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  name: pf-cluster-engine
+  labels:
+    app: pf-cluster
+    tier: engine
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: pf-cluster
+        tier: engine
+  template:
+    metadata:
+      labels:
+        app: pf-cluster
+        tier: engine
+    spec:
+      containers:
+      - name: engine-node
+        image: gcr.io/ping-identity/pingfederate:10.0.0-Beta-centos-edge
+        ports:
+        - containerPort: 9031
+        resources:
+          requests:
+            memory: "1.5Gi"
+            cpu: "1"
+          limits:
+            memory: "1.5Gi"
+            cpu: "1"
+        envFrom:
+          - configMapRef:
+              name: engine-variables
+          - secretRef:
+              name: devops-secret
+              optional: true
 ---
 apiVersion: v1
 kind: Service
@@ -101,33 +98,35 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: pf-admin-loadbalancer
-    labels:
-        run: pf-cluster
-        tier: frontend
+  name: pf-console-lb
+  labels:
+    app: pf-cluster
+    tier: console
 spec:
-    ports:
-        - name: admin-port
-          port: 9999
-          protocol: TCP
-          targetPort: 9999
-    selector:
-        app: pf-cluster
-        tier: frontend
+  ports:
+  - port: 9999
+    protocol: TCP
+    targetPort: 9999
+  selector:
+    app: pf-cluster
+    tier: console
+  sessionAffinity: None
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: pf-engine-loadbalancer
-    labels:
-        run: pf-cluster
-        tier: backend
+  name: pf-engine-lb
+  labels:
+    app: pf-cluster
+    tier: engine
 spec:
-    ports:
-        - name: engine-port
-          port: 9031
-          protocol: TCP
-          targetPort: 9031
-    selector:
-        app: pf-cluster
-        tier: backend
+  ports:
+  - port: 9031
+    protocol: TCP
+    targetPort: 9031
+  selector:
+    app: pf-cluster
+    tier: engine
+  sessionAffinity: None
+  type: LoadBalancer
