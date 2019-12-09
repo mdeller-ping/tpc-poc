@@ -91,7 +91,7 @@
     <urn:Tables>
         <urn:Table name="Credential Validators">
             <urn:Row>
-                <urn:Field name="Password Credential Validator Instance">simplePcv</urn:Field>
+                <urn:Field name="Password Credential Validator Instance">aurora</urn:Field>
             </urn:Row>
         </urn:Table>
     </urn:Tables>
