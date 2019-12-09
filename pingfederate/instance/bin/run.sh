@@ -10,7 +10,7 @@
 DIRNAME=`dirname "$0"`
 PROGNAME=`basename "$0"`
 GREP="grep"
-JAVA_OPTS="-Djavax.net.debug=ssl,handshake"
+# JAVA_OPTS="-Djavax.net.debug=ssl,handshake"
 
 # Use the maximum available, or set MAX_FD != -1 to use that
 MAX_FD="maximum"
