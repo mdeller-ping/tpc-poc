@@ -32,7 +32,7 @@ spec:
             cpu: "1"
         envFrom:
           - configMapRef:
-              name: pingfederate-environment-variables
+              name: console-variables
           - secretRef:
               name: devops-secret
               optional: true
@@ -71,7 +71,7 @@ spec:
             cpu: "1"
         envFrom:
           - configMapRef:
-              name: pingfederate-engine-environment-variables
+              name: engine-variables
           - secretRef:
               name: devops-secret
               optional: true
