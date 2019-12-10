@@ -14,7 +14,7 @@ spec:
       containers:
       - args:
         - --nongui
-        - -t /opt/apache-jmeter/bin/client_credentials.jmx
+        - -t /opt/apache-jmeter/bin/pf-sign-in-test.jmx
         - -JthreadCount=100
         - -Jduration=3000
         - -JpfHost=pingfederate
