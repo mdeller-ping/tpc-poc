@@ -1,0 +1,52 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+resources:
+- ../pingfederate
+- telegraf-conf.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: jolokia-environment-variables
+    envs:
+      - jolokia-variables
+  - name: telegraf-environment-variables
+    envs:
+      - telegraf-variables
+
+patches:
+- target: 
+    kind: Deployment
+    name: pf-cluster-engine
+  path: telegraf-container.yaml
+- target: 
+    kind: Deployment
+    name: pf-cluster-engine
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/envFrom/-
+      value: 
+        configMapRef:
+          name: jolokia-environment-variables
+- target: 
+    kind: Deployment
+    name: pf-cluster-engine
+  patch: |-
+    - op: add
+      path: /spec/template/spec/volumes
+      value: 
+        - name: telegraf-pingfederate-config
+          configMap:
+            name: telegraf-pingfederate-config
+- target: 
+    kind: Deployment
+    name: pf-cluster-engine
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/1/envFrom
+      value: 
+        - configMapRef:
+            name: telegraf-environment-variables
+

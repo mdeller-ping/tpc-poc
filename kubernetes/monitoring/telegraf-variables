@@ -1,0 +1,5 @@
+MONITOR_HOST=http://influxdb.tick.svc.cluster.local:8086
+MONITOR_PASSWORD=root
+MONITOR_USERNAME=root
+ENV=tpc
+DATABASE=pingfed-tpc

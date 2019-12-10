@@ -32,7 +32,7 @@ spec:
             cpu: "1"
         envFrom:
           - configMapRef:
-              name: console-variables
+              name: pingfederate-environment-variables
           - secretRef:
               name: devops-secret
               optional: true
@@ -71,7 +71,7 @@ spec:
             cpu: "1"
         envFrom:
           - configMapRef:
-              name: engine-variables
+              name: pingfederate-engine-environment-variables
           - secretRef:
               name: devops-secret
               optional: true
@@ -95,6 +95,7 @@ spec:
   selector:
      app: pf-cluster
 ---
+#removing Load balancer and creating ingress. 
 apiVersion: v1
 kind: Service
 metadata:
@@ -111,8 +112,9 @@ spec:
     app: pf-cluster
     tier: console
   sessionAffinity: None
-  type: LoadBalancer
+  # type: LoadBalancer
 ---
+#removing Load balancer and creating ingress. 
 apiVersion: v1
 kind: Service
 metadata:
@@ -129,4 +131,4 @@ spec:
     app: pf-cluster
     tier: engine
   sessionAffinity: None
-  type: LoadBalancer
+  # type: LoadBalancer
