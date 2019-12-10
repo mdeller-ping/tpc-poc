@@ -95,7 +95,6 @@ spec:
   selector:
      app: pf-cluster
 ---
-#removing Load balancer and creating ingress. 
 apiVersion: v1
 kind: Service
 metadata:
@@ -112,9 +111,8 @@ spec:
     app: pf-cluster
     tier: console
   sessionAffinity: None
-  # type: LoadBalancer
+  type: LoadBalancer
 ---
-#removing Load balancer and creating ingress. 
 apiVersion: v1
 kind: Service
 metadata:
@@ -131,4 +129,4 @@ spec:
     app: pf-cluster
     tier: engine
   sessionAffinity: None
-  # type: LoadBalancer
+  type: LoadBalancer
