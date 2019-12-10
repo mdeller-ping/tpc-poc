@@ -1,0 +1,28 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+
+resources:
+- cluster.yaml
+
+# The only difference in standalone deployments vs "fullstack" (integrated) is the product configurations. 
+# here we replace standalone server-profiles ("getting-started") with "baseline" for each product
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+#creates configmaps. removes sensitive data. 
+# Devops user/key should be namespace specific and stored as k8s secret. 
+configMapGenerator:
+- name: pingfederate-environment-variables
+  envs: 
+    - console-variables
+- name: pingfederate-engine-environment-variables
+  envs: 
+    - engine-variables
+
+# patches:
+# - target: 
+#     kind: Deployment
+#     name: pf-cluster-engine
+#   path: monitoring/telegraf.yaml
