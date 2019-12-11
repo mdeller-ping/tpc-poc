@@ -18,10 +18,11 @@ spec:
         args:
         - --nongui
         - -t /opt/apache-jmeter/bin/authorization_code.jmx
-        - -JthreadCount=100
-        - -Jduration=3000
+        - -JthreadCount=1
+        - -Jduration=10
         # - -JpfHost=pingfederate
-        # - -JapplicationName=1
+        - -JapplicationName=jmeter-pod
+        # - -JinfluxHost=influxdb.tick
         # - --logfile result.jtl
         image: pingidentity/apache-jmeter:edge
         imagePullPolicy: Always
