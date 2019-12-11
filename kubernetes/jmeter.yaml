@@ -18,8 +18,8 @@ spec:
         args:
         - --nongui
         - -t /opt/apache-jmeter/bin/authorization_code.jmx
-        # - -JthreadCount=100
-        # - -Jduration=3000
+        - -JthreadCount=100
+        - -Jduration=3000
         # - -JpfHost=pingfederate
         # - -JapplicationName=1
         # - --logfile result.jtl
