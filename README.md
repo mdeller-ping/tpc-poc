@@ -15,7 +15,7 @@ $ git clone https://github.com/mdeller-ping/tpc-poc.git
 ```
 ## Customizations:
 ### engine-variables and console-variables configmaps
-Customize `kubernetes/pingfederate/console/console-variables.yaml` and `kubernetes/pingfederate/engine/engine-variables.yaml` with your environment specific information. 
+Customize `kubernetes/pingfederate/console/console-variables.yaml` and `kubernetes/pingfederate/engine/engine-variables.yaml` with your environment specific information (including your PING_IDENTITY_DEVOPS_USER and PING_IDENTITY_DEVOPS_KEY). 
 
 ## Apply
 
