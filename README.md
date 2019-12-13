@@ -13,25 +13,14 @@ Kubernetes stuff
 ```text
 $ git clone https://github.com/mdeller-ping/tpc-poc.git
 ```
-
-## Create console-variables configmap
-Customize kubernetes/console-variables with your environment specific information and then create the configmap
-
-```text
-$ kubectl create configmap console-variables --from-env-file=kubernetes/console-variables
-```
-
-## Create engine-variables configmap
-Customize kubernetes/engine-variables with your environment specific information and then create the configmap
-
-```text
-$ kubectl create configmap engine-variables --from-env-file=kubernetes/engine-variables
-```
+## Customizations:
+### engine-variables and console-variables configmaps
+Customize `kubernetes/pingfederate/console/console-variables.yaml` and `kubernetes/pingfederate/engine/engine-variables.yaml` with your environment specific information. 
 
 ## Apply
 
 ```text
-$ kubectl apply -f kubernetes/cluster.yaml
+$ kubectl apply -R -f kubernetes/pingfederate
 ```
 
 ## See the things
@@ -117,4 +106,10 @@ pf-cluster-engine-7b668d769f-pt869    0/1     Terminating   0          116s
 
 ```text
 kubectl logs -f pod/pf-cluster-console-xxx
+```
+
+## Bounce PF engines
+To just bounce PF engines to get the latest profile:
+```
+kubectl patch deployment pf-cluster-engine --patch "{\"spec\": {\"template\": {\"metadata\": { \"labels\": {  \"gitrev\": \"$(git rev-parse --short HEAD)\"}}}}}"
 ```
