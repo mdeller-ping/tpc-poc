@@ -12,17 +12,18 @@ spec:
       name: jmeter
     spec:
       containers:
-      - args:
-        - --nongui
-        - -t /opt/apache-jmeter/bin/pf-sign-in-test.jmx
-        - -JthreadCount=100
-        - -Jduration=3000
-        - -JpfHost=pingfederate
-        - -JapplicationName=1
-        - --logfile result.jtl
-        envFrom:
+      - envFrom:
         - configMapRef:
             name: jmeter-variables
+        args:
+        - --nongui
+        - -t /opt/apache-jmeter/bin/authorization_code.jmx
+        - -JthreadCount=64
+        - -Jduration=300
+        # - -JpfHost=pingfederate
+        - -JapplicationName=jmeter-pod
+        # - -JinfluxHost=influxdb.tick
+        # - --logfile result.jtl
         image: pingidentity/apache-jmeter:edge
         imagePullPolicy: Always
         name: jmeter
@@ -33,8 +34,8 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 6
-            memory: 10Gi
+            cpu: 2
+            memory: 3Gi
           requests:
-            cpu: 6
-            memory: 10Gi
+            cpu: 2
+            memory: 3Gi

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pf-cluster-console
+  labels:
+    app: pf-cluster
+    tier: console
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: pf-cluster
+        tier: console
+  template:
+    metadata:
+      labels:
+        app: pf-cluster
+        tier: console
+    spec:
+      containers:
+      - name: console-node
+        image: gcr.io/ping-identity/pingfederate:10.0.0-Beta-centos-edge
+        ports:
+        - containerPort: 9999
+        resources:
+          requests:
+            memory: "1.5Gi"
+            cpu: "1"
+          limits:
+            memory: "1.5Gi"
+            cpu: "1"
+        envFrom:
+          - configMapRef:
+              name: console-variables
+          - secretRef:
+              name: devops-secret
+              optional: true
