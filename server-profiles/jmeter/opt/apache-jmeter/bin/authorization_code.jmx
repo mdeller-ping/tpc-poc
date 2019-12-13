@@ -227,20 +227,12 @@
               </elementProp>
               <elementProp name="influxdbUrl" elementType="Argument">
                 <stringProp name="Argument.name">influxdbUrl</stringProp>
-<<<<<<< HEAD
-                <stringProp name="Argument.value">http://localhost:8086/write?db=jmeter_tpc</stringProp>
-=======
                 <stringProp name="Argument.value">http://influxdb.tick:8086/write?db=jmeter_tpc</stringProp>
->>>>>>> ab104d548f2114fa1984065be4b281e360f2ce36
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="application" elementType="Argument">
                 <stringProp name="Argument.name">application</stringProp>
-<<<<<<< HEAD
-                <stringProp name="Argument.value">${HOSTNAME}</stringProp>
-=======
                 <stringProp name="Argument.value">${__P(applicationName,jmeter-pod)}</stringProp>
->>>>>>> ab104d548f2114fa1984065be4b281e360f2ce36
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="measurement" elementType="Argument">
