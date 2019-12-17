@@ -1259,6 +1259,7 @@
         <Logger name="hsqldb.db" level="ERROR" />
 
         <Logger name="com.pingidentity.rsa.pcv.sql.tpci" level="WARN" />
+        <Logger name="org.sourceid" level="DEBUG" />
 
         <!-- ================ -->
         <!-- Loggers -->
