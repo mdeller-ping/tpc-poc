@@ -2,7 +2,8 @@
 <urn:PluginConfiguration isInheritExtendedContractAttributes="false" name="aurora" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
     <urn:Fields>
         <urn:Field name="JDBC Datasource">JDBC-74387A3C051BC8B4960C5A9D074ABDD37D7643A8</urn:Field>
-        <urn:Field name="Verify Password Store Procedure Name">user_login</urn:Field>
+        <urn:Field name="Database Query">SELECT password as hash FROM users WHERE username = ?</urn:Field>
+        <urn:Field name="Password Hash Column Name">hash</urn:Field>
     </urn:Fields>
     <urn:AdvancedFields/>
     <urn:Tables/>
