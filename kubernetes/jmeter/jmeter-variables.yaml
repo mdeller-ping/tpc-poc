@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   GIT_URL: https://github.com/mdeller-ping/tpc-poc.git
   GIT_PATH: server-profiles/jmeter
-  # GIT_PATH:
+  HEAP: 4096m
 kind: ConfigMap
 metadata:
   name: jmeter-variables
