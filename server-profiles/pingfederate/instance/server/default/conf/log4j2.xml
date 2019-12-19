@@ -1258,7 +1258,7 @@
         <Logger name="org.apache.axis" level="INFO" />
         <Logger name="hsqldb.db" level="ERROR" />
 
-        <Logger name="com.pingidentity.rsa.pcv.sql.tpci" level="DEBUG" />
+        <Logger name="com.pingidentity.rsa.pcv.sql.tpci" level="INFO" />
         <Logger name="org.sourceid" level="WARN" />
 
         <!-- ================ -->

@@ -78,7 +78,7 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
 
             } catch (Exception ex) {
 
-                logger.debug("validatePassword :: Bcrypt failed", ex);
+                logger.info("validatePassword :: Bcrypt failed", ex);
                 logger.debug("validatePassword :: db hash: " + db_password_hash);
 
                 return false;
@@ -87,13 +87,13 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
 
             if (passBcrypt) {
 
-                logger.debug("validatePassword :: Bcrypt match");
+                logger.info("validatePassword :: Bcrypt match");
 
                 return true;
 
             } else {
 
-                logger.debug("validatePassword :: Bcrypt failed");
+                logger.info("validatePassword :: Bcrypt failed");
                 logger.debug("validatePassword :: db hash: " + db_password_hash);
 
                 return false;
@@ -119,13 +119,13 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
 
                 if (db_password_hash.equalsIgnoreCase(divorce)) {
 
-                    logger.debug("validatePassword :: SHA-1 match");
+                    logger.info("validatePassword :: SHA-1 match");
 
                     return true;
 
                 } else {
 
-                    logger.debug("validatePassword :: SHA-1 failed");
+                    logger.info("validatePassword :: SHA-1 failed");
                     logger.debug("validatePassword :: db hash: " + db_password_hash);
                     logger.debug("validatePassword :: password hash: " + divorce);
 
@@ -135,8 +135,9 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
 
             } catch (Exception ex) {
 
-                logger.debug("validatePassword :: SHA-1 failed", ex);
-                logger.debug("validatePassword :: db hash: " + db_password_hash);
+                logger.warn("validatePassword :: SHA-1 failed", ex);
+                logger.warn("validatePassword :: db hash: " + db_password_hash);
+                logger.warn("validatePassword :: " + username);
 
                 return false;
 
@@ -146,8 +147,9 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
 
             // db_password_hash unexpectedly does not begin with Bcrypt or SHA-1
 
-            logger.debug("validatePassword :: unexpected database hash algorithm");
-            logger.debug("validatePassword :: db hash: " + db_password_hash);
+            logger.warn("validatePassword :: unexpected database hash algorithm");
+            logger.warn("validatePassword :: db hash: " + db_password_hash);
+            logger.warn("validatePassword :: " + username);
 
             return false;
         }
@@ -179,7 +181,7 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
         PreparedStatement stmt = null;
         Connection conn = null;
 
-        logger.debug("processPasswordCredential :: username: " + username);
+        logger.info("processPasswordCredential :: username: " + username);
 
 
         try {
@@ -212,16 +214,14 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
                     }
 
                 } else {
-                    logger.debug("processPasswordCredential :: user record not found");
-
-                    throw new PasswordCredentialValidatorAuthnException(false, "processPasswordCredential :: invalid username and/or password");
+                    logger.info("processPasswordCredential :: user record not found");
                 }
             }
         } catch (PasswordCredentialValidatorAuthnException ex) {
             logger.debug("processPasswordCredential :: Exception is: " + ex + ", with message: " + ex.getMessageKey());
             throw new PasswordCredentialValidatorAuthnException(false, ex.getMessageKey());
         } catch (Exception ex) {
-            logger.debug("Exception is " + ex);
+            logger.warn("Exception is " + ex);
             throw new PasswordValidationException("processPasswordCredential :: other error validating username/password", ex);
         } finally {
             try {
@@ -237,7 +237,7 @@ public class SQLPasswordCredentialValidator implements PasswordCredentialValidat
                     conn.close();
                 }
             } catch (SQLException ex) {
-                logger.debug("processPasswordCredential :: Exception is " + ex);
+                logger.warn("processPasswordCredential :: Exception is " + ex);
                 throw new PasswordValidationException("processPasswordCredential :: other SQL error validating username/password", ex);
             }
         }
