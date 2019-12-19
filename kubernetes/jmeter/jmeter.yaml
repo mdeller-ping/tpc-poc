@@ -18,8 +18,8 @@ spec:
         args:
         - --nongui
         - -t /opt/apache-jmeter/bin/authorization_code.jmx
-        - -JthreadCount=32
-        - -Jduration=300
+        - -JthreadCount=64
+        - -Jduration=1800
         - -JrampUp=120
         # - -JpfHost=pingfederate
         - -JapplicationName=jmeter-pod
@@ -35,8 +35,8 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 2
-            memory: 8Gi
+            cpu: 1
+            memory: 4Gi
           requests:
-            cpu: 2
-            memory: 8Gi
+            cpu: 1
+            memory: 4Gi
