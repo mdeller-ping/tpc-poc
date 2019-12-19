@@ -20,6 +20,7 @@ spec:
         - -t /opt/apache-jmeter/bin/authorization_code.jmx
         - -JthreadCount=32
         - -Jduration=300
+        - -JrampUp=120
         # - -JpfHost=pingfederate
         - -JapplicationName=jmeter-pod
         # - -JinfluxHost=influxdb.tick
@@ -35,7 +36,7 @@ spec:
         resources:
           limits:
             cpu: 2
-            memory: 8192Gi
+            memory: 8Gi
           requests:
             cpu: 2
-            memory: 8192Gi
+            memory: 8Gi
