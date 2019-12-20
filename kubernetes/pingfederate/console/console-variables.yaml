@@ -1,6 +1,8 @@
 apiVersion: v1
 data:
   OPERATIONAL_MODE: CLUSTERED_CONSOLE
+  JETTY_THREADS_MIN: 25
+  JETTY_THREADS_MAX: 75
   PF_DNS_PING_CLUSTER: _bind-port._tcp.pf-cluster-dns
   PF_DNS_PING_NAMESPACE: ping-cloud-devops-eks-mdeller
   PF_DNS_PING_RECORDTYPE: SRV
