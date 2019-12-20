@@ -85,8 +85,8 @@
     <!-- =========================================================== -->
 
     <Get name="ThreadPool">
-        <Set name="minThreads" type="int">25</Set>
-        <Set name="maxThreads" type="int">75</Set>
+        <Set name="minThreads" type="int">${threadsMin:-10}</Set>
+        <Set name="maxThreads" type="int">${threadsMax:-200}</Set>
         <Set name="detailedDump">false</Set>
     </Get>
 
