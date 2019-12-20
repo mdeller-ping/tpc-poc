@@ -1,8 +1,8 @@
 apiVersion: v1
 data:
   OPERATIONAL_MODE: CLUSTERED_ENGINE
-  JETTY_MIN_THREADS: 25
-  JETTY_MAX_THREADS: 75
+  JETTY_MIN_THREADS: '25'
+  JETTY_MAX_THREADS: '75'
   PF_DNS_PING_CLUSTER: _bind-port._tcp.pf-cluster-dns
   PF_DNS_PING_NAMESPACE: ping-cloud-devops-eks-mdeller
   PF_DNS_PING_RECORDTYPE: SRV
