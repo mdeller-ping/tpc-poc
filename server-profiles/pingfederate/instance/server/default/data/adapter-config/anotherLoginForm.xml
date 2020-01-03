@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urn:AdapterConfiguration authnCtxClassRef="" isInheritAttributeSettings="false" isInheritAttributeMapping="false" maskOgnlValues="false" isInheritExtendedContractAttributes="false" name="loginForm" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+<urn:AdapterConfiguration authnCtxClassRef="" isInheritAttributeSettings="false" isInheritAttributeMapping="false" maskOgnlValues="false" isInheritExtendedContractAttributes="false" name="anotherLoginForm" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
     <urn:Fields>
         <urn:Field name="Challenge Retries">3</urn:Field>
         <urn:Field name="Session State">None</urn:Field>
@@ -17,7 +17,7 @@
         <urn:Field name="Local Identity Profile"/>
         <urn:Field name="Notification Publisher"/>
         <urn:Field name="Enable Username Recovery">false</urn:Field>
-        <urn:Field name="Login Template">html.form.login.tpc.html</urn:Field>
+        <urn:Field name="Login Template">html.form.login.template.html</urn:Field>
         <urn:Field name="Logout Path"/>
         <urn:Field name="Logout Redirect"/>
         <urn:Field name="Logout Template">idp.logout.success.page.template.html</urn:Field>
@@ -53,7 +53,7 @@
         <urn:Field name="CAPTCHA for Username recovery">false</urn:Field>
     </urn:Fields>
     <urn:AdvancedFields>
-        <urn:Field name="Login Template">html.form.login.tpc.html</urn:Field>
+        <urn:Field name="Login Template">html.form.login.template.html</urn:Field>
         <urn:Field name="Logout Path"/>
         <urn:Field name="Logout Redirect"/>
         <urn:Field name="Logout Template">idp.logout.success.page.template.html</urn:Field>
@@ -95,21 +95,11 @@
             </urn:Row>
         </urn:Table>
     </urn:Tables>
-    <urn:ExtendedContractAttributes>
-        <urn:AttributeName>user_status</urn:AttributeName>
-        <urn:AttributeName>document</urn:AttributeName>
-    </urn:ExtendedContractAttributes>
+    <urn:ExtendedContractAttributes/>
     <urn:UniqueKeyField>username</urn:UniqueKeyField>
     <urn:AttributeMapping>
-        <urn1:AttributeMap Name="user_status" Type="JDBC" AttributeSourceId="postgres" Value="user_status" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
         <urn1:AttributeMap Name="policy.action" Type="Adapter" Value="policy.action" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
-        <urn1:AttributeMap Name="document" Type="JDBC" AttributeSourceId="postgres" Value="document" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
         <urn1:AttributeMap Name="username" Type="Adapter" Value="username" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
-        <urn1:AttributeSource Id="postgres" Description="postgres" Type="JDBC" DataSourceId="JDBC-74387A3C051BC8B4960C5A9D074ABDD37D7643A8" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2">
-            <urn1:Parameter Name="schema" Value="public"/>
-            <urn1:Parameter Name="filter" Value="email=${username}"/>
-            <urn1:Parameter Name="tableName" Value="users"/>
-        </urn1:AttributeSource>
         <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
     </urn:AttributeMapping>
 </urn:AdapterConfiguration>

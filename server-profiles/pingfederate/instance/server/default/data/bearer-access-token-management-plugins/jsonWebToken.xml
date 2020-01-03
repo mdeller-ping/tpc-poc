@@ -58,5 +58,7 @@
     </urn:Tables>
     <urn:ExtendedContractAttributes>
         <urn:AttributeName>sub</urn:AttributeName>
+        <urn:AttributeName>user_status</urn:AttributeName>
+        <urn:AttributeName>document</urn:AttributeName>
     </urn:ExtendedContractAttributes>
 </urn:AccessTokenManagerConfiguration>
